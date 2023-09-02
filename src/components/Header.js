@@ -10,12 +10,12 @@ function Header() {
   return (
     <div className="flex justify-between items-center">
       <p className="text-4xl font-bold">Products</p>
-      <div className="bg-gray-100 shadow-sm flex space-x-4 items-center px-4 py-3 rounded-full ">
+      <div className="bg-gray-100 shadow-sm flex space-x-4 items-center px-4 py-3 rounded-sm ">
         <Search className="h-5 w-6" />
         <input
           type="text"
           placeholder="Search"
-          className="border-none placeholder:text-lg bg-transparent outline-none w-80"
+          className="border-none placeholder:text-lg bg-transparent outline-none w-96"
         />
       </div>
       <div className="flex space-x-4 items-center ">

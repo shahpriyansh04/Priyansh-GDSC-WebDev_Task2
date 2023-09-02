@@ -7,7 +7,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { BsGoogle } from "react-icons/bs";
+import { FcGoogle } from "react-icons/fc";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
@@ -96,12 +96,13 @@ export default function Login() {
         </CardHeader>
         <CardContent className="flex flex-col space-y-4">
           <Button
+            variant="outline"
             className="text-lg"
             onClick={signInWithGoogle}
             disabled={loading}
           >
             {loading && <Loader2 className="mr-4 h-4 w-4 animate-spin" />}
-            <BsGoogle className="mr-2 h-4 w-4" />
+            <FcGoogle className="mr-2 h-5 w-5" />
             Google
           </Button>
           <div className="relative">
