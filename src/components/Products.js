@@ -61,6 +61,7 @@ export default function Products() {
               return (
                 <ProductCard
                   key={product.id}
+                  id={product.id}
                   title={product.title}
                   description={product.description}
                   img={product.image}

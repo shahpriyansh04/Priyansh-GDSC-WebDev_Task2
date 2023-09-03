@@ -2,7 +2,8 @@ import Link from "next/link";
 import { Button } from "./ui/button";
 import { useAuth } from "@/lib/auth";
 import Profile from "./Profile";
-import { Search } from "lucide-react";
+import { Search, ShoppingCart } from "lucide-react";
+import Cart from "./Cart";
 
 function Header() {
   const { user } = useAuth();
@@ -19,6 +20,7 @@ function Header() {
         />
       </div>
       <div className="flex space-x-4 items-center ">
+        <Cart />
         {user != null ? (
           <Profile />
         ) : (

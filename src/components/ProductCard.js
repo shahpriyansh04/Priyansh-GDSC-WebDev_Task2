@@ -24,15 +24,23 @@ import { Label } from "./ui/label";
 import { Button } from "./ui/button";
 import { useState } from "react";
 import { Minus, Plus } from "lucide-react";
+import { cartState } from "@/lib/atoms/cart";
+import { useRecoilState } from "recoil";
 export default function ProductCard({
   title,
   description,
+  id,
   img,
   price,
   category,
   rating,
 }) {
   const [quantity, setQuantity] = useState(1);
+  const [cart, setCart] = useRecoilState(cartState);
+
+  const addToCart = () => {
+    setCart((prev) => [...prev, { id, title, img, price, category, quantity }]);
+  };
 
   return (
     <Dialog className="w-full">
@@ -106,7 +114,9 @@ export default function ProductCard({
                 </Button>
               </div>
 
-              <Button className="flex-1 p-4 h-fu ll">Add To Cart</Button>
+              <Button className="flex-1 p-4 h-fu ll" onClick={addToCart}>
+                Add To Cart
+              </Button>
             </div>
           </div>
         </div>
