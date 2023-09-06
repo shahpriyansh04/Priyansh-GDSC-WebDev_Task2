@@ -1,21 +1,20 @@
-import { ShoppingCart } from "lucide-react";
+import { ScrollArea } from "@/components/ui/scroll-area";
 import {
   Sheet,
   SheetContent,
-  SheetDescription,
   SheetFooter,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { ScrollArea } from "@/components/ui/scroll-area";
+import { ShoppingCart } from "lucide-react";
 
 import { cartState } from "@/lib/atoms/cart";
+import { useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
 import CartProduct from "./CartProduct";
 import { Button } from "./ui/button";
 import { Separator } from "./ui/separator";
-import { useEffect, useState } from "react";
 export default function Cart() {
   const cart = useRecoilState(cartState);
   const data = cart[0];

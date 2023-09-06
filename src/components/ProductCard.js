@@ -1,31 +1,20 @@
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   Dialog,
   DialogContent,
   DialogDescription,
-  DialogFooter,
-  DialogHeader,
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
 
 import { Rating } from "@smastrom/react-rating";
 
-import "@smastrom/react-rating/style.css";
-import { Input } from "./ui/input";
-import { Label } from "./ui/label";
-import { Button } from "./ui/button";
-import { useState } from "react";
-import { Minus, Plus } from "lucide-react";
 import { cartState } from "@/lib/atoms/cart";
+import "@smastrom/react-rating/style.css";
+import { Minus, Plus } from "lucide-react";
+import { useState } from "react";
 import { useRecoilState } from "recoil";
+import { Button } from "./ui/button";
 export default function ProductCard({
   title,
   description,

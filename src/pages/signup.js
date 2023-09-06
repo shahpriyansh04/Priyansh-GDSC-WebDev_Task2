@@ -7,22 +7,22 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { FcGoogle } from "react-icons/fc";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { FcGoogle } from "react-icons/fc";
 
+import { useAuth } from "@/lib/auth";
+import app from "@/lib/firebase";
 import {
-  getAuth,
-  createUserWithEmailAndPassword,
   GoogleAuthProvider,
+  createUserWithEmailAndPassword,
+  getAuth,
   signInWithPopup,
 } from "firebase/auth";
-import app from "@/lib/firebase";
-import { useEffect, useState } from "react";
-import Link from "next/link";
-import { useAuth } from "@/lib/auth";
-import { useRouter } from "next/router";
 import { Loader2 } from "lucide-react";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 
 export default function SignIn() {
   const router = useRouter();

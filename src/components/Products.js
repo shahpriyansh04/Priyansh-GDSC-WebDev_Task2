@@ -1,16 +1,7 @@
 import { useEffect, useState } from "react";
+import Filter from "./Filter";
 import ProductCard from "./ProductCard";
 import SkeletonProductCard from "./SkeletonProductCard";
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectLabel,
-  SelectTrigger,
-} from "./ui/select";
-import Filter from "./Filter";
-import { MoveDown, MoveUp } from "lucide-react";
 import Sort from "./Sort";
 
 export default function Products() {

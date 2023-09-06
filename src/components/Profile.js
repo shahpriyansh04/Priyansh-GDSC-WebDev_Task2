@@ -1,5 +1,3 @@
-import { useAuth } from "@/lib/auth";
-import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -8,8 +6,10 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { getAuth, signOut } from "firebase/auth";
+import { useAuth } from "@/lib/auth";
 import app from "@/lib/firebase";
+import { getAuth, signOut } from "firebase/auth";
+import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 
 export default function Profile() {
   const { user } = useAuth();

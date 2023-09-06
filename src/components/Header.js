@@ -1,9 +1,9 @@
-import Link from "next/link";
-import { Button } from "./ui/button";
 import { useAuth } from "@/lib/auth";
-import Profile from "./Profile";
-import { Search, ShoppingCart } from "lucide-react";
+import { Search } from "lucide-react";
+import Link from "next/link";
 import Cart from "./Cart";
+import Profile from "./Profile";
+import { Button } from "./ui/button";
 
 function Header() {
   const { user } = useAuth();

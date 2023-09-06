@@ -1,8 +1,7 @@
-import { Trash2 } from "lucide-react";
-import { Button } from "./ui/button";
 import { cartState } from "@/lib/atoms/cart";
+import { Trash2 } from "lucide-react";
 import { useRecoilState } from "recoil";
-import { Separator } from "@/components/ui/separator";
+import { Button } from "./ui/button";
 
 export default function CartProduct({ id, title, img, price, quantity }) {
   const [cart, setCart] = useRecoilState(cartState);
