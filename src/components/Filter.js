@@ -14,7 +14,7 @@ export default function Filter({ setFilter }) {
         Filter{" "}
       </SelectTrigger>
       <SelectContent align="end" className="font-semibold text-md">
-        <SelectGroup onChange={(e) => console.log(e.target.value)}>
+        <SelectGroup>
           <SelectLabel className="text-md font-semibold">Category</SelectLabel>
           <SelectItem value="all" className="font-semibold text-md">
             All{" "}

@@ -5,7 +5,6 @@ import { Button } from "./ui/button";
 
 export default function CartProduct({ id, title, img, price, quantity }) {
   const [cart, setCart] = useRecoilState(cartState);
-  console.log(id);
   const removeItem = () => {
     setCart((prev) => prev.filter((item) => item.id !== id));
   };

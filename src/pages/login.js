@@ -24,7 +24,6 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
 
-  console.log(email);
   const auth = getAuth(app);
   const { user } = useAuth();
   useEffect(() => {

@@ -25,7 +25,7 @@ export default function SignIn() {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const { user } = useAuth();
-  console.log(email);
+
   const auth = getAuth(app);
 
   useEffect(() => {

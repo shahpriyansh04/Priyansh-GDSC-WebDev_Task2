@@ -7,7 +7,6 @@ import { Button } from "./ui/button";
 
 function Header() {
   const { user } = useAuth();
-  console.log(user);
   return (
     <div className="flex justify-between items-center">
       <p className="text-4xl font-bold">Products</p>

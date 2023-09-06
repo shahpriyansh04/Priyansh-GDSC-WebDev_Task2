@@ -27,9 +27,6 @@ export default function Products() {
     }
   }, [sort]);
 
-  console.log(products);
-  console.log(filter);
-  console.log(sort);
   return (
     <div className="mt-24 ">
       <div className="flex justify-between items-center">

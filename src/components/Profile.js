@@ -23,7 +23,6 @@ export default function Profile() {
     signOut(auth)
       .then(() => {
         // Sign-out successful.
-        console.log("logout");
       })
       .catch((error) => {
         // An error happened.

@@ -18,7 +18,6 @@ import { Separator } from "./ui/separator";
 export default function Cart() {
   const cart = useRecoilState(cartState);
   const data = cart[0];
-  console.log(cart[0]);
   const [totalPrice, setTotalPrice] = useState();
 
   useEffect(() => {

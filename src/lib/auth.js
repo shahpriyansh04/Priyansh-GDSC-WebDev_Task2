@@ -64,7 +64,6 @@ const signInWithGoogle = (setLoading) => {
       const token = credential.accessToken;
       // The signed-in user info.
       const user = result.user;
-      console.log(user);
       setLoading(false);
       return user;
       // IdP data available using getAdditionalUserInfo(result)
@@ -75,7 +74,6 @@ const signInWithGoogle = (setLoading) => {
       const errorCode = error.code;
       const errorMessage = error.message;
       // The email of the user's account used.
-      console.log(errorMessage);
       const email = error.customData.email;
       // The AuthCredential type that was used.
       setLoading(false);
@@ -91,7 +89,6 @@ const login = (auth, email, password, setLoading) => {
     .then((userCredential) => {
       // Signed in
       const user = userCredential.user;
-      console.log(user);
       setLoading(false);
       return user;
       // ...
@@ -99,7 +96,6 @@ const login = (auth, email, password, setLoading) => {
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
-      console.log(errorMessage);
       setLoading(false);
       return error;
     });
@@ -111,7 +107,6 @@ const createUser = (auth, email, password, setLoading) => {
     .then((userCredential) => {
       // Signed in
       const user = userCredential.user;
-      console.log(user);
       setLoading(false);
       return user;
       // ...
@@ -119,7 +114,6 @@ const createUser = (auth, email, password, setLoading) => {
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
-      console.log(errorMessage);
       // ..
       setLoading(false);
       return error;
