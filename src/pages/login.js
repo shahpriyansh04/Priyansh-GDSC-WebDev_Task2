@@ -10,14 +10,9 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { FcGoogle } from "react-icons/fc";
 
-import { useAuth } from "@/lib/auth";
+import { login, signInWithGoogle, useAuth } from "@/lib/auth";
 import app from "@/lib/firebase";
-import {
-  GoogleAuthProvider,
-  getAuth,
-  signInWithEmailAndPassword,
-  signInWithPopup,
-} from "firebase/auth";
+import { getAuth } from "firebase/auth";
 import { Loader2 } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -27,7 +22,6 @@ export default function Login() {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const provider = new GoogleAuthProvider();
   const [loading, setLoading] = useState(false);
 
   console.log(email);
@@ -39,53 +33,6 @@ export default function Login() {
     }
   }, [user]);
 
-  const submitForm = () => {
-    setLoading(true);
-    const auth = getAuth();
-    signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        // Signed in
-        const user = userCredential.user;
-        console.log(user);
-        setLoading(false);
-        // ...
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log(errorMessage);
-        setLoading(false);
-      });
-  };
-
-  const signInWithGoogle = () => {
-    setLoading(true);
-    signInWithPopup(auth, provider)
-      .then((result) => {
-        // This gives you a Google Access Token. You can use it to access the Google API.
-        const credential = GoogleAuthProvider.credentialFromResult(result);
-        const token = credential.accessToken;
-        // The signed-in user info.
-        const user = result.user;
-        console.log(user);
-        setLoading(false);
-        // IdP data available using getAdditionalUserInfo(result)
-        // ...
-      })
-      .catch((error) => {
-        // Handle Errors here.
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        // The email of the user's account used.
-        console.log(errorMessage);
-        const email = error.customData.email;
-        // The AuthCredential type that was used.
-        setLoading(false);
-        const credential = GoogleAuthProvider.credentialFromError(error);
-        // ...
-      });
-  };
-
   return (
     <div className="flex justify-center items-center h-screen">
       <Card>
@@ -96,7 +43,7 @@ export default function Login() {
           <Button
             variant="outline"
             className="text-lg"
-            onClick={signInWithGoogle}
+            onClick={() => signInWithGoogle(setLoading)}
             disabled={loading}
           >
             {loading && <Loader2 className="mr-4 h-4 w-4 animate-spin" />}
@@ -144,7 +91,9 @@ export default function Login() {
           </p>
           <Button
             className="w-full text-lg"
-            onClick={submitForm}
+            onClick={() => {
+              login(auth, email, password, setLoading);
+            }}
             disabled={loading}
           >
             {loading && <Loader2 className="mr-4 h-4 w-4 animate-spin" />}

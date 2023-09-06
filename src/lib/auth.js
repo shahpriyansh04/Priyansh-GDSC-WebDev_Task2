@@ -1,7 +1,14 @@
+import {
+  GoogleAuthProvider,
+  createUserWithEmailAndPassword,
+  getAuth,
+  onAuthStateChanged,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+} from "firebase/auth";
 import React from "react";
-import { onAuthStateChanged, getAuth } from "firebase/auth";
-import app from "./firebase";
 import { TailSpin } from "react-loader-spinner";
+import app from "./firebase";
 const auth = getAuth(app);
 
 export const AuthContext = React.createContext({});
@@ -46,3 +53,77 @@ export const AuthContextProvider = ({ children }) => {
     </AuthContext.Provider>
   );
 };
+
+const signInWithGoogle = (setLoading) => {
+  const provider = new GoogleAuthProvider();
+  setLoading(true);
+  signInWithPopup(auth, provider)
+    .then((result) => {
+      // This gives you a Google Access Token. You can use it to access the Google API.
+      const credential = GoogleAuthProvider.credentialFromResult(result);
+      const token = credential.accessToken;
+      // The signed-in user info.
+      const user = result.user;
+      console.log(user);
+      setLoading(false);
+      return user;
+      // IdP data available using getAdditionalUserInfo(result)
+      // ...
+    })
+    .catch((error) => {
+      // Handle Errors here.
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      // The email of the user's account used.
+      console.log(errorMessage);
+      const email = error.customData.email;
+      // The AuthCredential type that was used.
+      setLoading(false);
+      return error;
+
+      // ...
+    });
+};
+
+const login = (auth, email, password, setLoading) => {
+  setLoading(true);
+  signInWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      // Signed in
+      const user = userCredential.user;
+      console.log(user);
+      setLoading(false);
+      return user;
+      // ...
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.log(errorMessage);
+      setLoading(false);
+      return error;
+    });
+};
+
+const createUser = (auth, email, password, setLoading) => {
+  setLoading(true);
+  createUserWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      // Signed in
+      const user = userCredential.user;
+      console.log(user);
+      setLoading(false);
+      return user;
+      // ...
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.log(errorMessage);
+      // ..
+      setLoading(false);
+      return error;
+    });
+};
+
+export { createUser, login, signInWithGoogle };
